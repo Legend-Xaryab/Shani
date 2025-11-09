@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heŋrīīx</title>
+
+  <!-- Boxicons -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: #fff;
+      min-height: 100vh;
+      transition: 0.4s;
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 100;
+    }
+
+    .logo a {
+      font-size: 1.8rem;
+      font-weight: 700;
+      font-family: "Montserrat", sans-serif;
+      text-decoration: none;
+      background: linear-gradient(90deg, #ff8a00, #e52e71);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    ul li a {
+      text-decoration: none;
+      color: #eee;
+      font-weight: 500;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    ul li a:hover,
+    ul li a.active {
+      color: #ffe259;
+    }
+
+    ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: #ffe259;
+      left: 0;
+      bottom: -5px;
+      transition: 0.3s;
+    }
+
+    ul li a:hover::after {
+      width: 100%;
+    }
+
+    .mode {
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: #ffe259;
+    }
+
+    /* Hero Section */
+    .main {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 0 8%;
+      gap: 60px;
+    }
+
+    .detail {
+      max-width: 500px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(18px);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .detail h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      font-family: "Montserrat", sans-serif;
+    }
+
+    .detail h1 span {
+      background: linear-gradient(90deg, #ffe259, #ffa751);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .detail h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 20px;
+      color: #ddd;
+    }
+
+    .detail p {
+      max-width: 450px;
+      margin-bottom: 25px;
+      line-height: 1.7;
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+
+    .btn a button {
+      padding: 14px 32px;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 6px 20px rgba(18, 140, 126, 0.4);
+    }
+
+    .btn a button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 30px rgba(18, 140, 126, 0.6);
+    }
+
+    /* Social Icons */
+    .social {
+      margin-bottom: 20px;
+    }
+
+    .social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(15px);
+      font-size: 1.5rem;
+      color: #ffe259;
+      margin-right: 12px;
+      transition: 0.3s;
+    }
+
+    .social a:hover {
+      transform: scale(1.15);
+      background: linear-gradient(135deg, #ff8a00, #e52e71);
+      color: #fff;
+    }
+
+    /* Image Section */
+    .img-sec {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(18px);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .img-sec img {
+      width: 260px;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+      transition: 0.4s;
+    }
+
+    .img-sec img:hover {
+      transform: scale(1.05) rotate(1deg);
+    }
+
+    /* Dark Mode */
+    .dark-mode {
+      background: #121212;
+      color: #fff;
+    }
+
+    .dark-mode header {
+      background: rgba(30, 30, 30, 0.7);
+    }
+
+    .dark-mode .detail,
+    .dark-mode .img-sec {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    @media (max-width: 768px) {
+      ul {
+        display: none;
+      }
+
+      .main {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 30px;
+        padding: 40px 5%;
+      }
+
+      .img-sec img {
+        width: 220px;
+        height: 220px;
+      }
+
+      .detail h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo"><a href="#"MrShanii</a></div>
+    <ul>
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Skills</a></li>
+      <li><a href="#">Portfolio</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <label class="mode">
+      <input type="checkbox" id="darkbtn" hidden>
+      <i class='bx bxs-moon'></i>
+    </label>
+  </header>
+
+  <section class="main">
+    <div class="detail">
+      <div class="social">
+        <a href="https://wa.me/message/PBZUEVKITECOI1" target="_blank"><i class='bx bxl-linkedin'></i></a>
+        <a href="https://www.tiktok.com/@itxshanii78?_r=1&_t=ZS-91EEqpQAS2h" target="_blank"><i class='bx bxl-instagram'></i></a>
+        <a href="https://www.facebook.com/share/1G55VGGRCb/" target="_blank"><i class='bx bxl-facebook-circle'></i></a>
+        <a href="https://wa.me/923471532203?text=Shani%20Sir :))%20I%20Want%20To%20Work%20With%20You." target="_blank"><i class='bx bxl-whatsapp'></i></a>
+      </div>
+      <h1>Hi, I'm <span>ZARYAB</span></h1>
+      <h3>Professional Web "Developer 💻"</h3>
+      <p>I craft modern, responsive, and visually stunning websites with clean code and creativity.  
+        Let's build something impactful together 🚀</p>
+      <div class="btn">
+        <a href="https://wa.me/923166606488?text=- Shani Sir Hello." target="_blank">
+          <button>Get in Touch</button>
+        </a>
+      </div>
+    </div>
+    <div class="img-sec">
+      <img src="1714400120405.jpg" alt="Profile Image">
+    </div>
+  </section>
+
+  <script>
+    const darkbtn = document.getElementById('darkbtn');
+    const body = document.body;
+    const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+    if (isDarkMode) {
+      body.classList.add('dark-mode');
+      darkbtn.checked = true;
+    }
+
+    darkbtn.addEventListener('change', () => {
+      if (darkbtn.checked) {
+        body.classList.add('dark-mode');
+        localStorage.setItem('darkMode', 'enabled');
+      } else {
+        body.classList.remove('dark-mode');
+        localStorage.setItem('darkMode', 'disabled');
+      }
+    });
+  </script>
+</body>
+
+</html>
